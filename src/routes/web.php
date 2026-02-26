@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [ProductController::class, 'index'])->name('product');
+
+Route::middleware('auth')->group(function()
+{
+    Route::get('/setting_profile', [AuthController::class, 'showSettingProfile']);
+    Route::patch('/update', [AuthController::class, 'update'])->name('update');
 });

@@ -15,6 +15,10 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->integer('purchase_price');
+            $table->string('shipping_address');
             $table->timestamps();
         });
     }

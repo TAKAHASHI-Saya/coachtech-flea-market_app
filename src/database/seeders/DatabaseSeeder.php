@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $user = User::factory()->create([
+            'username' => 'テストてす子',
+            'email' => 'test@example.com',
+            'password' => bcrypt('test12345678'),
+            'profile_image' => 'profile_images/profile.png',
+            'postcode' => '123-4567',
+            'address' => 'テスト住所',
+            'building' => 'テスト建物'
+        ]);
+
+        $this->call([
+            CategoriesTableSeeder::class,
+            ConditionsTableSeeder::class,
+            ProductsTableSeeder::class,
+            CategoryProductTableSeeder::class,
+        ]);
     }
 }
