@@ -26,13 +26,16 @@ class Product extends Model
         return $this->hasOne(Purchase::class);
     }
     public function categories(){
-        return $this->belongsMany(Category::class);
+        return $this->belongsToMany(Category::class);
     }
     public function condition(){
         return $this->belongsTo(Condition::class);
     }
     public function likes(){
         return $this->hasMany(Like::class);
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
     public function conditions(){
         return $this->hasMany(Condition::class);

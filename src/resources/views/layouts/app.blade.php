@@ -11,7 +11,9 @@
 <body>
     <header class="header">
         <div class="header__heading">
-            <img src="/images/header-logo.png" alt="タイトルロゴ" class="header__logo">
+            <a href="{{route('product')}}" class="header__link">
+                <img src="/images/header-logo.png" alt="タイトルロゴ" class="header__logo">
+            </a>
         </div>
         <div class="header__search">
             <form action="" method="get" class="header__search-form">

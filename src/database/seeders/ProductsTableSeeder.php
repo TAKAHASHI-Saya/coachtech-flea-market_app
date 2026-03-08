@@ -50,7 +50,7 @@ class ProductsTableSeeder extends Seeder
                 'user_id' => $userId,
                 'condition_id' => 4,
                 'product_name' => '革靴',
-                'product_image' => 'product/images/leather_shoes.jpg',
+                'product_image' => 'product_images/leather_shoes.jpg',
                 'brand' => null,
                 'product_detail' => 'クラシックなデザインの革靴',
                 'sales_price' => 4000,
@@ -64,7 +64,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => null,
                 'product_detail' => '高性能なノートパソコン',
                 'sales_price' => 45000,
-                'status' => 0,
+                'status' => 1,
             ],
             [
                 'user_id' => $userId,
@@ -84,7 +84,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => null,
                 'product_detail' => 'おしゃれなショルダーバッグ',
                 'sales_price' => 3500,
-                'status' => 0,
+                'status' => 1,
             ],
             [
                 'user_id' => $userId,
@@ -114,7 +114,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => null,
                 'product_detail' => '便利なメイクアップセット',
                 'sales_price' => 2500,
-                'status' => 0,
+                'status' => 1,
             ],
         ]);
     }

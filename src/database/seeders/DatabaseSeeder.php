@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
             ConditionsTableSeeder::class,
             ProductsTableSeeder::class,
             CategoryProductTableSeeder::class,
+            PurchaseTableSeeder::class,
+            LikesTableSeeder::class,
+            CommentsTableSeeder::class,
         ]);
     }
 }

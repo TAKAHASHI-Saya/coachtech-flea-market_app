@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,12 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', [ProductController::class, 'index'])->name('product');
+Route::get('/item/{item_id}', [ProductController::class, 'show'])->name('detail');
 
 Route::middleware('auth')->group(function()
 {
     Route::get('/setting_profile', [AuthController::class, 'showSettingProfile']);
     Route::patch('/update', [AuthController::class, 'update'])->name('update');
+    Route::post('/item/{item_id}/comment', [CommentController::class, 'store']);
+    Route::post('/item/{item_id}/like', [LikeController::class, 'toggle']);
 });

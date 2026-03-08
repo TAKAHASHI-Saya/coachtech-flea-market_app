@@ -7,25 +7,49 @@
 @section('content')
 <div class="content">
     <div class="content__tab">
-        <input type="radio" id = "recommend" name="tabs" {{$activeTab === 'recommend' ? 'checked' : ''}} class="content__tab-input">
-        <input type="radio" name="tabs" id="my-list" {{$activeTab === 'my-list' ? 'checked' :''}} class="content__tab-input">
-        <label for="recommend" class="content__tab-label">おすすめ</label>
-        <label for="my-list" class="content__tab-label">マイリスト</label>
+        <a href="/" class="content__tab-label {{$activeTab === 'recommend' ? 'is-active' : ''}}">おすすめ</a>
+        <a href="/?tab=mylist" class="content__tab-label {{$activeTab === 'mylist' ? 'is-active' : ''}}">マイリスト</a>
     </div>
+
     <!-- おすすめ商品の表示 -->
+     @if($activeTab === 'recommend')
     <div class="content__inner">
+        @foreach($products as $product)
         <div class="content__inner-group">
-            <img src="" alt="商品画像" class="content__inner-image">
-            <p class="content__inner-text">商品名</p>
+            <a href="{{route('detail', ['item_id' => $product->id])}}" class="content__inner-link">
+                <img src="{{asset('storage/' . $product->product_image)}}" alt="商品画像" class="content__inner-image">
+                <p class="content__inner-text">
+                    {{$product->product_name}}
+                </p>
+            </a>
         </div>
+        @endforeach
     </div>
+    @endif
+
     <!-- マイリストの表示 -->
-    <div class="content__inner">
-        <div class="content__inner-group">
-            <img src="" alt="商品画像" class="content__inner-image">
-            <p class="content__inner-text">商品名</p>
-        </div>
-    </div>
+     @if($activeTab === 'mylist')
+        @auth
+            @if($myListProducts->isEmpty())
+                <p>マイリストに商品がありません</p>
+            @else
+                <div class="content__inner">
+                    @foreach($myListProducts as $product)
+                    <div class="content__inner-group">
+                    <a href="{{route('detail', ['item_id' => $product->id])}}" class="content__inner-link">
+                    <img src="{{asset('storage/' . $product->product_image)}}" alt="商品画像" class="content__inner-image">
+                    <p class="content__inner-text">
+                    {{$product->product_name}}
+                    </p>
+                    </a>
+                    </div>
+                    @endforeach
+                </div>
+            @endif
+        @else
+        <!-- 未認証時は非表示 -->
+        @endauth
+    @endif
 </div>
 @endsection
 

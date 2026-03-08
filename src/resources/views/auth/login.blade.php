@@ -35,7 +35,7 @@
                     <input type="password" name="password" id="" class="form__input-item">
                 </div>
                 <div class="form__error">
-                    @if($errors->has('email'))
+                    @if($errors->has('password'))
                         @foreach($errors->get('password') as $message)
                             <p>{{$message}}</p>
                         @endforeach
